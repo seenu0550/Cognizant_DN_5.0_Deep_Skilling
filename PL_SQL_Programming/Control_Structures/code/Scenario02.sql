@@ -1,0 +1,14 @@
+BEGIN
+    FOR rec IN (
+        SELECT CUSTOMERID
+        FROM CUSTOMERS
+        WHERE BALANCE > 10000
+    ) LOOP
+        UPDATE CUSTOMERS
+        SET ISVIP = 'TRUE'
+        WHERE CUSTOMERID = rec.CUSTOMERID;
+    END LOOP;
+
+    COMMIT;
+END;
+/
